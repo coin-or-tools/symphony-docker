@@ -15,7 +15,7 @@ docker pull tkralphs/symphony
 ```
 
 This retrieves a docker image containing SYMPHONY. Once
-yu have the image, you can create a container, which is a running version of
+you have the image, you can create a container, which is a running version of
 the image. Note that this container is completely isolated from the OS you are
 working in, so to run any useful commands inside it, you need to first copy
 the files in to the container, then copy the results back out. To do this,
@@ -36,7 +36,7 @@ Here, we are copying into the `/tmp` directory inside the container. Finally,
 execute a solver command.
 
 ```
-docker /var/symphony/bin/symphony -F /tmp/example.mps > /tmp/output
+docker run tkralphs/symphony /var/symphony/bin/symphony -F /tmp/example.mps > /tmp/output
 ```
 
 and finally, copy the output back out
@@ -45,7 +45,7 @@ and finally, copy the output back out
 docker cp sym:/tmp/output .
 ```
 
-Note that you are as root by default inside the container, but this is not
+Note that you are root by default inside the container, but this is not
 much of a risk inside a docker container, since it can be recreated easily.
 
 # Build from Source
@@ -55,8 +55,8 @@ much of a risk inside a docker container, since it can be recreated easily.
 Just clone the repository and build the docker image by
 
 ```
-git clone https://github.com/tkralphs/symphony
-cd symphony
+git clone https://github.com/tkralphs/symphony-docker
+cd symphony-docker
 sudo docker build -t symphony image/
 ```
 
@@ -65,24 +65,13 @@ commands will have to be executed with `sudo`.
 
 ## Windows
 
-First install Docker for Windows. Depending on whether you are using a recent
-version of Windows, you may need to enable virtualization in the BIOS
-settings. For details, see
-
-https://docs.docker.com/engine/installation/windows
-
-As of this writing, it's important that you let Docker install Git for Windows
-(do not uncheck the box for installing git in the installer, even though it
-indicates that it is optional). After installing, run the "Docker Quickstart
-Terminal" application. Make a note of the IP address assigned to the docker
-machine (something like 192.168.99.100).
-
-From the terminal clone the repository and build the docker image by the
-commands
+First install Docker Desktop for Windows (in older versions of Windows without
+built-in virtualization, the instructions my be different). From a Powershell
+terminal clone the repository and build the docker image by the commands
 
 ```
-git clone https://github.com/tkralphs/symphony
-cd symphony
+git clone https://github.com/tkralphs/symphony-docker
+cd symphony-docker
 docker build -t symphony image/
 ```
 

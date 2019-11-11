@@ -1,9 +1,10 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get -y install git subversion gcc g++ make wget gfortran
+RUN apt-get -y install git gcc g++ gfortran make wget file pkg-config
+RUN apt-get -y install libblas-dev liblapack-dev
 
-RUN cd /var
-RUN svn checkout --non-interactive --trust-server-cert https://projects.coin-or.org/svn/SYMPHONY/releases/5.6.14 /var/symphony
-RUN cd /var/symphony/ThirdParty/Glpk && ./get.Glpk
-RUN cd /var/symphony && ./configure --with-gmpl &&  make -j4 && make install
+RUN git clone https://github.com/coin-or/coinbrew /var/symphony
+WORKDIR /var/symphony
+RUN ./coinbrew fetch SYMPHONY --no-third-party --no-prompt
+RUN ./coinbrew build SYMPHONY --no-third-party --no-prompt --prefix=/usr

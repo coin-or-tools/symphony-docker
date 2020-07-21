@@ -7,11 +7,11 @@ Patrick!
 # Install and Use From Docker Hub
 
 This image is now on [Docker
-Hub](https://hub.docker.com/r/tkralphs/symphony/). To use,
+Hub](https://hub.docker.com/r/coinor/symphony/). To use,
 simply install Docker (see instructions below) and then do
 
 ```
-docker pull tkralphs/symphony
+docker pull coinor/symphony
 ```
 
 This retrieves a docker image containing SYMPHONY. Once
@@ -22,7 +22,7 @@ the files in to the container, then copy the results back out. To do this,
 first create and start a container, as follows:
 
 ```
-docker create --name=sym -it tkralphs/symphony
+docker create --name=sym -it coinor/symphony
 docker start sym
 ```
 
@@ -36,7 +36,7 @@ Here, we are copying into the `/tmp` directory inside the container. Finally,
 execute a solver command.
 
 ```
-docker run tkralphs/symphony /var/symphony/bin/symphony -F /tmp/example.mps > /tmp/output
+docker run coinor/symphony /var/symphony/bin/symphony -F /tmp/example.mps > /tmp/output
 ```
 
 and finally, copy the output back out
@@ -55,7 +55,7 @@ much of a risk inside a docker container, since it can be recreated easily.
 Just clone the repository and build the docker image by
 
 ```
-git clone https://github.com/tkralphs/symphony-docker
+git clone https://github.com/coin-or-tools/symphony-docker
 cd symphony-docker
 sudo docker build -t symphony image/
 ```
@@ -70,7 +70,7 @@ built-in virtualization, the instructions my be different). From a Powershell
 terminal clone the repository and build the docker image by the commands
 
 ```
-git clone https://github.com/tkralphs/symphony-docker
+git clone https://github.com/coin-or-tools/symphony-docker
 cd symphony-docker
 docker build -t symphony image/
 ```
@@ -120,7 +120,7 @@ eval "$(docker-machine env default)"
 Now follow instructions as above for building the container
 
 ```
-git clone https://github.com/tkralphs/symphony
+git clone https://github.com/coin-or-tools/symphony-docker
 cd symphony/
 docker build -t symphony image/
 ```
